@@ -44,7 +44,8 @@ export class ChatComponent {
     const formValue = this.chatForm.value.chat_message;
     this.chat_service
       .chatMessage(formValue)
-      .then(() => {
+      .then((res) => {
+        console.log(res);
         this.chatForm.reset();
       })
       .catch((err) => {

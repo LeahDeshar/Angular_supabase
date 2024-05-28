@@ -16,12 +16,11 @@ export class ChatService {
 
   async chatMessage(text: string) {
     try {
-      const { data, error } = await this.supabase.from('chat').insert({ text });
+      const { data, error } = await this.supabase.from('Chat').insert({ text });
 
       if (error) {
         alert(error.message);
       }
-      return data;
     } catch (error) {
       alert(error);
     }
