@@ -52,4 +52,15 @@ export class ChatComponent {
         alert(err.message);
       });
   }
+
+  onListChat() {
+    this.chat_service
+      .listChat()
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        alert(err.message);
+      });
+  }
 }

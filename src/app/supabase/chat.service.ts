@@ -25,4 +25,19 @@ export class ChatService {
       alert(error);
     }
   }
+
+  async listChat() {
+    try {
+      const { data, error } = await this.supabase
+        .from('Chat')
+        .select('*,users(*)');
+
+      if (error) {
+        alert(error.message);
+      }
+      return data;
+    } catch (error) {
+      throw error;
+    }
+  }
 }
