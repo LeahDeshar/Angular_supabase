@@ -55,6 +55,7 @@ export class ChatComponent {
       .then((res) => {
         console.log(res);
         this.chatForm.reset();
+        this.onListChat();
       })
       .catch((err) => {
         alert(err.message);
@@ -62,10 +63,12 @@ export class ChatComponent {
   }
 
   onListChat() {
+    // console.log('chats', this.chats);
+
     this.chat_service
       .listChat()
       .then((res: IChat[] | null) => {
-        console.log(res);
+        console.log('res', res);
 
         if (res != null) {
           this.chats.set(res);

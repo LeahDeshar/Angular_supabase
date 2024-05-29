@@ -17,7 +17,7 @@ export class ChatService {
   async chatMessage(text: string) {
     try {
       const { data, error } = await this.supabase.from('Chat').insert({ text });
-
+      console.log(data);
       if (error) {
         alert(error.message);
       }

@@ -15,14 +15,13 @@
               <div class="chat-message-left pb-4">
                 <div class="me-5">
                   <img
-                    src="{{"
-                    msg?.users?.avatar_url
-                    }}
+                    src="{{ msg?.users?.avatar_url }}"
                     class="rounded-circle mr-1"
-                    alt="Sharon Doe"
+                    alt="notfound"
                     width="40"
                     height="40"
                   />
+                  <!-- <div>{{ msg?.users?.avatar_url }}</div> -->
                   <div class="text-muted small text-nowrap mt-2">
                     {{ msg?.created_at | date : "M/d/yy, h:mm a" }}
                   </div>
