@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, effect, inject, signal } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 import {
@@ -8,11 +8,13 @@ import {
   Validators,
 } from '@angular/forms';
 import { ChatService } from '../../supabase/chat.service';
+import { IChat } from '../../interface/chat-response';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-chat',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, DatePipe],
   templateUrl: './chat.component.html',
   styleUrl: './chat.component.css',
 })
@@ -23,12 +25,18 @@ export class ChatComponent {
   private router = inject(Router);
   private fd = inject(FormBuilder);
   chatForm!: FormGroup;
+  chats = signal<IChat[]>([]);
 
   constructor() {
     this.chatForm = this.fd.group({
       chat_message: ['', Validators.required],
     });
+
+    effect(() => {
+      this.onListChat();
+    });
   }
+
   async logout() {
     this.auth
       .signOut()
@@ -56,8 +64,14 @@ export class ChatComponent {
   onListChat() {
     this.chat_service
       .listChat()
-      .then((res) => {
+      .then((res: IChat[] | null) => {
         console.log(res);
+
+        if (res != null) {
+          this.chats.set(res);
+        } else {
+          console.log('No message found');
+        }
       })
       .catch((err) => {
         alert(err.message);
