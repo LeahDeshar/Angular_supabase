@@ -1,4 +1,4 @@
-import { Component, effect, inject } from '@angular/core';
+import { Component, effect, inject, signal } from '@angular/core';
 import { ChatService } from '../../supabase/chat.service';
 import { Router } from '@angular/router';
 
@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
 export class DeleteModalComponent {
   private chat_service = inject(ChatService);
   private router = inject(Router);
+  dismiss = signal(false);
   constructor() {
     effect(() => {
       console.log();
@@ -24,6 +25,8 @@ export class DeleteModalComponent {
       .deleteChat(id)
       .then(() => {
         let currentUrl = this.router.url;
+
+        this.dismiss.set(true);
 
         this.router
           .navigateByUrl('/', { skipLocationChange: true })
