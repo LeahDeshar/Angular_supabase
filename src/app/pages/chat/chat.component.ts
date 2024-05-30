@@ -81,4 +81,8 @@ export class ChatComponent {
         alert(err.message);
       });
   }
+
+  openDropDown(msg: IChat) {
+    console.log(msg);
+  }
 }
