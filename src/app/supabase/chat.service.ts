@@ -44,7 +44,7 @@ export class ChatService {
   }
 
   async deleteChat(id: string) {
-    const data = await this.supabase.from('chat').delete().eq('id', id);
+    const data = await this.supabase.from('Chat').delete().eq('id', id);
     return data;
   }
 
