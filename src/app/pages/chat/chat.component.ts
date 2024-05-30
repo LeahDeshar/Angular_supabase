@@ -84,5 +84,6 @@ export class ChatComponent {
 
   openDropDown(msg: IChat) {
     console.log(msg);
+    this.chat_service.selectedChats(msg);
   }
 }
