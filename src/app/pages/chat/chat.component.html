@@ -32,6 +32,27 @@
                   </div>
                   {{ msg?.text }}
                 </div>
+                <div class="dropdown">
+                  <span
+                    class="mt-3 ms-5"
+                    type="button"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  >
+                    ...
+                  </span>
+                  <ul class="dropdown-menu">
+                    <li>
+                      <a
+                        class="dropdown-item"
+                        href="#"
+                        data-bs-toggle="modal"
+                        data-bs-target="#exampleModal"
+                        >Delete</a
+                      >
+                    </li>
+                  </ul>
+                </div>
               </div>
             </div>
           </div>
@@ -59,3 +80,6 @@
     </div>
   </div>
 </main>
+
+<!-- Modal -->
+<app-delete-modal />
