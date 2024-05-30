@@ -43,6 +43,11 @@ export class ChatService {
     }
   }
 
+  async deleteChat(id: string) {
+    const data = await this.supabase.from('chat').delete().eq('id', id);
+    return data;
+  }
+
   selectedChats(msg: IChat) {
     this.savedChat.set(msg);
   }

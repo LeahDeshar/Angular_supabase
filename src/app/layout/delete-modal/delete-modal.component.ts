@@ -16,4 +16,8 @@ export class DeleteModalComponent {
       console.log();
     });
   }
+
+  deleteChat() {
+    const id = (this.chat_service.savedChat() as { id: string }).id;
+  }
 }
