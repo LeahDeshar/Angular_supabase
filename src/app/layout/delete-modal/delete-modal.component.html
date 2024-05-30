@@ -23,7 +23,12 @@
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
           No
         </button>
-        <button (click)="deleteChat()" type="button" class="btn btn-primary">
+        <button
+          [attr.data-bs-dismiss]
+          (click)="deleteChat()"
+          type="button"
+          class="btn btn-primary"
+        >
           Yes
         </button>
       </div>
